@@ -37,22 +37,22 @@ public class CategoryController {
     		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Category Added");
     	
     }
-    /*
+    
     @GetMapping({"/v1.0", "/v1.1"})
     public List<Category> getAllCategories(){
-    	return this.categoryService.getAllCategories();
+    	return this.inventoryRepository.getAllCategories();
     }
     
     @GetMapping({"/v1.0/{categoryId}", "/v1.1/{categoryId}"})
     public Category getCategoryById(@PathVariable("categoryId") 
     long categoryId){
-    	return this.categoryService.getCategoryById(categoryId);
+    	return this.inventoryRepository.getCategoryById(categoryId);
     }
      
     @DeleteMapping({"/v1.0/{categoryId}", "/v1.1/{categoryId}"})
     public ResponseEntity<?> deleteCategoryById(@PathVariable("categoryId") 
     long categoryId){
-    	boolean status= this.categoryService.deleteCategoryById(categoryId);
+    	boolean status= this.inventoryRepository.deleteCategoryById(categoryId);
     	if(status)
     		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Category with "
     				+ "Id"+categoryId+"deleted");
@@ -68,7 +68,7 @@ public class CategoryController {
     	
     	Map<Object,Object> model=new HashMap<>();
     	
-    	Category category= this.categoryService.getCategoryById(categoryId);
+    	Category category= this.inventoryRepository.getCategoryById(categoryId);
     	
     	if(category!=null)
     	{
@@ -86,6 +86,6 @@ public class CategoryController {
 
     	
     }
-    */
+    
 	
 }
