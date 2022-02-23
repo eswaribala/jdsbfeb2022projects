@@ -20,24 +20,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.bohnman.squiggly.Squiggly;
 import com.github.bohnman.squiggly.util.SquigglyUtils;
 import com.jd.inventoryapi.models.Category;
-import com.jd.inventoryapi.services.CategoryService;
+import com.jd.inventoryapi.repositories.InventoryRepository;
+
 
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
     @Autowired
-	private CategoryService categoryService;
+	private InventoryRepository inventoryRepository;
     
     @PostMapping({"/v1.0", "/v1.1"})
     public ResponseEntity<?> addCategory(@RequestBody Category category){
     	
-    	Category categoryObj=this.categoryService.addCategory(category);
-    	if(categoryObj!=null)
-    		return ResponseEntity.status(HttpStatus.ACCEPTED).body(categoryObj);
-    	else
-    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Category Not Created");
-    	    	
+    	this.inventoryRepository.addCategory(category);
+    	
+    		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Category Added");
+    	
     }
+    /*
     @GetMapping({"/v1.0", "/v1.1"})
     public List<Category> getAllCategories(){
     	return this.categoryService.getAllCategories();
@@ -86,6 +86,6 @@ public class CategoryController {
 
     	
     }
-    
+    */
 	
 }
