@@ -48,7 +48,7 @@ public class InventoryRepository {
     }
     
     //delete 
-    
+    @Transactional
     public boolean deleteCategoryById(long categoryId) {
     	boolean status=false;
     	Category category=this.entityManager.find(Category.class,categoryId);
