@@ -33,7 +33,7 @@ public class Category {
     @Column(name="Category_Name",length = 100, nullable = false)
 	private String categoryName;
     @OneToMany(mappedBy ="category",
-			  cascade=CascadeType.ALL,fetch=FetchType.LAZY,
+			  cascade=CascadeType.MERGE,fetch=FetchType.LAZY,
 			  orphanRemoval = true)	 
     @JsonProperty("products")			  
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY) 
